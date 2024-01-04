@@ -5,7 +5,7 @@ import investorsRouter from "./routes/investorsRouter.js";
 import connectToDB from "./utils/connectToDB.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import config from "./utils/config.js";
-import unknownEndpoint from "./middlewares/unknownEndPoint.js";
+import unknownEndpoint from "./middlewares/unknownEndpoint.js";
 import productsRouter from "./routes/productsRouter.js";
 import selectedRouter from "./routes/selectedRouter.js";
 
