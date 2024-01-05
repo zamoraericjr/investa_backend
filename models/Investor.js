@@ -43,6 +43,6 @@ investorSchema.set("toJSON", {
   },
 });
 
-const Investor = mongoose.model("investor", investorSchema);
+const Investor = mongoose.model('investor', investorSchema);
 
 export default Investor;

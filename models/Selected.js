@@ -25,6 +25,6 @@ selectedSchema.set("toJSON", {
   },
 });
 
-const Selected = mongoose.model("selected", selectedSchema);
+const Selected = mongoose.model('selected', selectedSchema);
 
 export default Selected;
