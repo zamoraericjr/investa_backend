@@ -27,3 +27,5 @@ npm i mongoose
 
 npm i mongoose-unique-validator
 
+npm i bcrypt
+    - use in hashing the password, hash the pw so it will be stored to the db encrypted
