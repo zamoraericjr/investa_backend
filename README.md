@@ -25,7 +25,14 @@ npm i cors
 npm i mongoose
     - mongoose databse
 
+npm i mongoose@7.6.5    
+
 npm i mongoose-unique-validator
 
 npm i bcrypt
     - use in hashing the password, hash the pw so it will be stored to the db encrypted
+
+npm install firebase
+
+npm i multer
+    to be able to read or parse files request coming from the client

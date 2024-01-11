@@ -8,6 +8,8 @@ import config from "./utils/config.js";
 import unknownEndpoint from "./middlewares/unknownEndpoint.js";
 import productsRouter from "./routes/productsRouter.js";
 import selectedRouter from "./routes/selectedRouter.js";
+import userRouter from "./routes/userRouter.js";
+import upload from "./utils/multer.js";
 
 const MONGODB_URI = config.MONGODB_URI;
 const app = express();
@@ -23,9 +25,11 @@ app.use(express.json());
 app.use(express.static("dist"));
 app.use(morgan(":method :url :status :body"));
 
+app.use("/users", upload.single("image"), userRouter);
 app.use("/investors", investorsRouter);
 app.use("/products", productsRouter);
 app.use("/selected", selectedRouter);
+// app.use("/temps", tempsRouter);
 
 app.use(unknownEndpoint);
 app.use(errorHandler);

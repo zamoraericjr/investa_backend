@@ -62,9 +62,12 @@ async function updateInvRec(req, res, next){
       context: "query",
     });
 
-    if (!updatedRec) return res.status(404).send({ error: "Note not found!" });
+    if (!updatedRec) 
+    
+    return res.status(404).send({ error: "Note not found!" });
 
     return res.status(200).json(updatedRec);
+    
   } catch (error) {
     next(error);
   }

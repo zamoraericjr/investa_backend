@@ -65,7 +65,7 @@ async function updateProduct(req, res, next){
       context: "query",
     });
 
-    if (!updatedProd) return res.status(404).send({ error: "Note not found!" });
+    if (!updatedProd) return res.status(404).send({ error: "Not found!" });
 
     return res.status(200).json(updatedProd);
   } catch (error) {
