@@ -26,13 +26,15 @@ async function deleteInvestor(req, res, next) {
 
 async function addInvestor(req, res, next) {
 
-  const {investment, name, prod, recs} = req.body;
+  const {investment, name, prod, recs, uid, date} = req.body;
 
   const inv = new Investor({
     investment,
     name,
     prod,
-    recs
+    recs,
+    uid,
+    date
   })
 
   try {

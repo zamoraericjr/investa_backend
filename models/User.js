@@ -1,25 +1,33 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-  },
+  username: String,
   name: String,
   password: String,
-
-  tempPics:[
-    {
-    name: {
-      type: String,
-      required: false,
-    },
-  
-    url: {
-      type: String,
-      required: false,
-    },
-
+  draft: {
+    name: String,
+    desc: String,
+    dRef: String,
+    fund:[{
+      item: String,
+      amt: Number
+    }],
+    pics:[{
+      urlId: String,
+      refId: Object
+    }],
+    docs:[{
+      urlId: String,
+      refId: Object,
+      name: String
+    }]
+  },
+  likes:[{
+    prod: Number,
   }],
+  myInv:[{
+      prod: Number,
+    }],
 
 });
 

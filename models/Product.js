@@ -1,46 +1,42 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  key: {
-    type: Number,
-    minLength: 1,
-  },
-
-  name: {
-    type: String,
-    minLength: 1,
-  },
-
-  stat: {
-    type: Number,
-    minLength: 1,
-  },
-
-  growth: {
-    type: Number,
-    minLength: 1,
-  },
 
   id: mongoose.Schema.Types.ObjectId,
+  key: Number,
 
+  auth: String,
+  authId: String,
+  date: String,
+
+  name: String,
+  desc: String,
+  fRef: String,
+  fund:[{
+    item: String,
+    amt: Number
+  }],
+  pics:[
+    {
+    urlId: String,
+    refId: Object,
+  }],
+  docs:[
+    {
+    urlId: String,
+    refid: Object,
+    name: String,
+  }],
+
+  stat:Number,
+  growth: Number,
   profits:[
     {
-    date: {
-      type: String,
-      required: false,
-    },
-  
-    amt: {
-      type: Number,
-      required: false,
-    },
-
+    date: String,
+    amt: Number,
   }],
-  date: {
-    type: String,
-    minLength: 1,
-  },
-    
+  invs: Number,
+     
 });
 
 productSchema.set("toJSON", {

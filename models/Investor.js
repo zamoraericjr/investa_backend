@@ -17,6 +17,8 @@ const investorSchema = new mongoose.Schema({
   },
 
   id: mongoose.Schema.Types.ObjectId,
+  uid: String,
+  date: String,
 
   recs:[
     {

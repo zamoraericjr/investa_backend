@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import uploadFile from "../routes/uploadFile.js";
+import uploadFile from "../utils/uploadFile.js";
 
 async function getUsers(req, res) {
   const users = await User.find({});
@@ -7,7 +7,7 @@ async function getUsers(req, res) {
 }
 
 async function register(req, res, next) {
-  const {username, name, password, tempPics} = req.body;
+  const {username, name, password, draft, likes, myInv} = req.body;
 
   // const saltRounds = 10;
   // const passwordHash = await bcrypt.hash(password, saltRounds);
@@ -16,7 +16,9 @@ async function register(req, res, next) {
     username,
     name,
     password,
-    tempPics
+    draft,
+    likes,
+    myInv
   });
 
   try {
@@ -28,26 +30,29 @@ async function register(req, res, next) {
   }
 }
 
-async function editUser(req, res, next){
+async function createDraft(req, res, next){
 
   const id = req.params.id;
-  const file = req.file;
+  const {draft, likes, myInv} = req.body;
+  const update = {
+    draft,
+    likes,
+    myInv
+  };
 
-  const user = await User.findById(id);
-  const photoInfo = await uploadFile(file); 
-
-  const newTemp = {
-    name: photoInfo,
-    url: photoInfo
-}
   try {
+    const draftCreated = await User.findByIdAndUpdate(id, update, {
+      new: true,
+      runValidators: true,
+      context: "query",
+    });
 
-    user.tempPics = user.tempPics.concat(newTemp);
-await user.save();
+    if (!draftCreated) 
+    
+    return res.status(404).send({ error: "Not found!" });
 
-    if (!updateTemp) return res.status(404).send({ error: "Not found!" });
-
-    return res.status(200).json(newTemp);
+    return res.status(200).json(draftCreated);
+    
   } catch (error) {
     next(error);
   }
@@ -56,5 +61,5 @@ await user.save();
 export default {
   register,
   getUsers,
-  editUser
+  createDraft
 };

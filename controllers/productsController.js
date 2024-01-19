@@ -26,15 +26,38 @@ async function deleteProduct(req, res, next) {
 
 async function addProduct(req, res, next) {
 
-  const {key, name, stat, growth, profits, date} = req.body;
+  const {
+    key,
+    auth,
+    authId,
+    date,
+    name,
+    desc,
+    fRef,
+    fund,
+    pics,
+    docs,
+    stat,
+    growth,
+    profits,   
+    invs   
+  } = req.body;
 
   const prod = new Product({
     key,
+    auth,
+    authId,
+    date,
     name,
+    desc,
+    fRef,
+    fund,
+    pics,
+    docs,
     stat,
     growth,
-    profits,
-    date
+    profits,      
+    invs
   })
 
   try {
@@ -51,11 +74,12 @@ async function addProduct(req, res, next) {
 async function updateProduct(req, res, next){
 
   const id = req.params.id;
-  const { stat, growth, profits} = req.body;
+  const { stat, growth, profits, invs} = req.body;
   const update = {
     stat,
     growth,
-    profits
+    profits,
+    invs
   };
 
   try {
